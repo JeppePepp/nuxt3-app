@@ -9,24 +9,13 @@
   </NuxtLink>
 </template>
 
-<script lang="ts">
-import { NuxtLink } from "#components";
-import { defineNuxtComponent } from "#app";
-import { link } from "~~/types";
-import { ArrowNarrowRightIcon } from "@heroicons/vue/outline";
-export default defineNuxtComponent({
-  components: {
-    NuxtLink,
-    ArrowNarrowRightIcon,
-  },
-  props: {
-    link: {
-      type: Object as () => link,
-      required: true,
-    },
-  },
-  setup() {
-    return {};
+<script setup>
+import { ArrowNarrowRightIcon } from '@heroicons/vue/outline';
+
+defineProps({
+  link: {
+    type: Object,
+    required: true,
   },
 });
 </script>

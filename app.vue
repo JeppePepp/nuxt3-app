@@ -1,14 +1,10 @@
 <template>
   <div>
+    <NavBar />
     <NuxtPage />
   </div>
 </template>
 
-<style lang="scss">
-body {
-  @apply bg-gray-50 dark:bg-gray-800;
-}
-.global-text {
-  @apply text-gray-900 dark:text-gray-50;
-}
-</style>
+<script setup>
+import NavBar from '@/components/UI/Navigation/NavBar.vue';
+</script>

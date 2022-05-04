@@ -1,5 +1,15 @@
 <template>
-  <div v-if="contact">
+  <Container v-if="contact">
+    <BreadCrumb
+      :pages="[
+        { to: '/medarbetare', text: 'Medarbetare' },
+        {
+          to: `/medarbetare/${route.params.id}`,
+          text: contact.data.name[0].text,
+        },
+      ]"
+    />
+
     <article class="pt-12">
       <div class="grid lg:grid-cols-2 gap-12">
         <div class="aspect-w-3 aspect-h-2">
@@ -39,10 +49,12 @@
     </article>
 
     <!-- <pre>{{ contact }}</pre> -->
-  </div>
+  </Container>
 </template>
 
 <script setup>
+import BreadCrumb from '../../components/UI/BreadCrumb.vue';
+import Container from '@/components/UI/Container.vue';
 const { client } = usePrismic();
 
 const contact = ref(null);

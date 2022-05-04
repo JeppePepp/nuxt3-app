@@ -1,45 +1,21 @@
 <template>
-  <div class="max-w-xl mx-auto mt-4">
-    <div class="flex items-center">
-      <img
-        class="w-40 h-40 rounded-full mb-4"
-        height="160"
-        width="160"
-        src="https://avatars.githubusercontent.com/u/38668796?v=4"
-        alt="productfrontenddeveloper"
-      />
-      <a
-        target="blank"
-        class="ml-4 text-yellow-400 dark:text-green-400 font-bold"
-        href="https://github.com/productdevbook"
-        >Follow Me Github</a
-      >
+  <div class="mx-auto">
+    <div class="relative">
+      <Hero />
     </div>
-    <ul role="list" class="mt-10 space-y-4">
-      <li v-for="item in lists" :key="item.id">
-        <List
-          :link="{
-            id: item.id,
-            title: item.title,
-            url: item.url,
-          }"
-        />
-      </li>
-    </ul>
-    <article v-if="post" class="prose lg:prose-xl">
-      <prismic-rich-text :field="post.data.title" />
-      <prismic-rich-text :field="post.data.body" />
-    </article>
+
+    <Container v-if="post" class="">
+      <article class="prose lg:prose-xl">
+        <prismic-rich-text :field="post.data.title" />
+        <prismic-rich-text :field="post.data.body" />
+      </article>
+    </Container>
   </div>
 </template>
 
 <script setup>
-const lists = ref([
-  { id: 1, title: 'Pinia Store', url: 'pinia' },
-  { id: 2, title: 'Modal', url: 'modal' },
-  { id: 3, title: 'Menu', url: 'menu' },
-  { id: 4, title: 'Medarbetare.', url: 'medarbetare' },
-]);
+import Container from '@/components/UI/Container.vue';
+import Hero from '@/components/Hero.vue';
 
 const { client } = usePrismic();
 
@@ -54,3 +30,5 @@ useFetch(async () => {
   post.value = response;
 });
 </script>
+
+<style lang="css"></style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <Container>
     <div class="space-y-12">
       <div
         class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none"
@@ -38,10 +38,12 @@
         </li>
       </ul>
     </div>
-  </div>
+  </Container>
 </template>
 
 <script setup>
+import Container from '@/components/UI/Container.vue';
+
 const { contacts, fetchAll } = useMedarbetare();
 
 useFetch(async () => {
