@@ -1,8 +1,8 @@
 <template>
   <div class="mx-auto">
-    <div class="relative">
+    <!-- <div class="relative">
       <Hero />
-    </div>
+    </div> -->
 
     <Container v-if="post" class="">
       <article class="prose lg:prose-xl">
