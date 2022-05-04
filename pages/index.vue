@@ -36,9 +36,9 @@
 <script setup>
 const lists = ref([
   { id: 1, title: 'Pinia Store', url: 'pinia' },
-  { id: 1, title: 'Modal', url: 'modal' },
-  { id: 1, title: 'Menu', url: 'menu' },
-  { id: 1, title: 'New soon...', url: '' },
+  { id: 2, title: 'Modal', url: 'modal' },
+  { id: 3, title: 'Menu', url: 'menu' },
+  { id: 4, title: 'Medarbetare.', url: 'medarbetare' },
 ]);
 
 const { client } = usePrismic();
