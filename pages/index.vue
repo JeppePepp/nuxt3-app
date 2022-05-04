@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-sm mx-auto mt-4">
+  <div class="max-w-xl mx-auto mt-4">
     <div class="flex items-center">
       <img
         class="w-40 h-40 rounded-full mb-4"
@@ -26,26 +26,31 @@
         />
       </li>
     </ul>
+    <article v-if="post" class="prose lg:prose-xl">
+      <prismic-rich-text :field="post.data.title" />
+      <prismic-rich-text :field="post.data.body" />
+    </article>
   </div>
 </template>
 
-<script lang="ts">
-import { NuxtLink } from "#components";
-import { link } from "~/types";
-export default {
-  components: {
-    NuxtLink,
-  },
-  setup() {
-    const lists = ref<link[]>([
-      { id: 1, title: "Pinia Store", url: "pinia" },
-      { id: 1, title: "Modal", url: "modal" },
-      { id: 1, title: "Menu", url: "menu" },
-      { id: 1, title: "New soon...", url: "" },
-    ]);
-    return {
-      lists,
-    };
-  },
-};
+<script setup>
+const lists = ref([
+  { id: 1, title: 'Pinia Store', url: 'pinia' },
+  { id: 1, title: 'Modal', url: 'modal' },
+  { id: 1, title: 'Menu', url: 'menu' },
+  { id: 1, title: 'New soon...', url: '' },
+]);
+
+const { client } = usePrismic();
+
+const post = ref(null);
+
+useFetch(async () => {
+  const response = await client.getByUID(
+    'post',
+    'situationen-ukraine-och-ryssland'
+  );
+
+  post.value = response;
+});
 </script>
